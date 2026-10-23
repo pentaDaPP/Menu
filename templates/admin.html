@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Panel Administrativo Restaurante</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    
+</head>
+
+
+<body>
+    
+
+    <!-- =========================
+         CABECERA
+    ========================== -->
+
+    <header>
+        <div class="admin-header">
+        <a href="/" class="btn-volver">Volver al inicio</a>
+    </div>
+
+        <h1>
+            🍽️ Administración Restaurante
+        </h1>
+
+        <p>
+            Panel de control de platos
+        </p>
+
+    </header>
+
+
+
+    <div class="container">
+
+
+        <!-- =========================
+             AUTENTICACIÓN
+        ========================== -->
+
+        <div class="auth-container">
+
+            <h2>
+                🔐 Acceso administrativo
+            </h2>
+
+            <p>
+                Introduce la API Key para administrar
+                el menú del restaurante.
+            </p>
+
+
+            <div class="auth-form">
+
+                <input
+                    id="apiKey"
+                    type="password"
+                    placeholder="Introduce la API Key"
+                    autocomplete="off"
+                >
+
+
+                <button
+                    class="autorizar"
+                    id="btnAutorizar"
+                    onclick="autorizarAdministrador()"
+                >
+                    Autorizar
+                </button>
+
+            </div>
+
+
+            <p id="estado">
+                🔴 No autorizado
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             OPCIONES
+        ========================== -->
+
+        <div class="cards">
+
+
+            <!-- AGREGAR -->
+
+            <div class="card">
+
+                <h2>
+                    ➕ Agregar Plato
+                </h2>
+
+                <p>
+                    Crea nuevos productos del menú.
+                </p>
+
+
+                <button
+                    class="agregar"
+                    id="btnAgregar"
+                    disabled
+                    onclick="mostrarFormularioAgregar()"
+                >
+                    Agregar
+                </button>
+
+            </div>
+
+
+
+            <!-- ACTUALIZAR -->
+
+            <div class="card">
+
+                <h2>
+                    ✏️ Actualizar Plato
+                </h2>
+
+                <p>
+                    Modifica precio, imagen o descripción.
+                </p>
+
+
+                <button
+                    class="editar"
+                    id="btnActualizar"
+                    disabled
+                >
+                    Actualizar
+                </button>
+
+            </div>
+
+
+
+            <!-- ELIMINAR -->
+
+            <div class="card">
+
+                <h2>
+                    🗑️ Eliminar Plato
+                </h2>
+
+                <p>
+                    Elimina platos del menú.
+                </p>
+
+
+                <button
+                    class="eliminar"
+                    id="btnEliminar"
+                    disabled
+                    onclick="mostrarEliminar()"
+                >
+                    Eliminar
+                </button>
+                <div id="zonaEliminar" style="display: none;">
+                    <h3>selecciona el plato a eliminar</h3>
+                    <div id="listaPlatos"></div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        
+
+        <!-- =========================
+             FORMULARIO AGREGAR
+        ========================== -->
+
+        <div
+            class="formulario"
+            id="formularioAgregar"
+        >
+
+            <h2>
+                ➕ Datos del plato
+            </h2>
+
+
+            <input
+                id="nombre"
+                type="text"
+                placeholder="Nombre del plato"
+            >
+
+
+            <input
+                id="precio"
+                type="number"
+                step="0.01"
+                placeholder="Precio"
+            >
+
+
+            <textarea
+                id="descripcion"
+                placeholder="Descripción del plato"
+            ></textarea>
+
+
+            <input
+                id="imagen"
+                type="file"
+                placeholder="URL de la imagen"
+            >
+            <input
+                id="categoria"
+                type="text"
+                placeholder="categoria del plato">
+
+            <div class="guardar-container">
+
+                <button
+                    class="agregar"
+                    id="btnGuardar"
+                    disabled
+                    onclick="agregarPlato()"
+                >
+                    💾 Guardar plato
+                </button>
+
+            </div>
+
+
+            <div id="mensaje"></div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/admin.js"></script>
+
+
+</body>
+
+</html>
